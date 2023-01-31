@@ -1,0 +1,29 @@
+@import "../scss/reset";
+@import "../scss/fonts";
+
+html {
+  @extend %fontfamily;
+
+  body {
+    user-select: none;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: url(../img/bg.svg) top left / auto auto no-repeat;
+
+    @media only screen and (max-width: 768px) {
+      html {
+        font-size: 75%;
+      }
+    }
+
+    @media only screen and (max-width: 320px) {
+      html {
+        font-size: 62.5%;
+      }
+    }
+  }
+}
