@@ -29,8 +29,20 @@
   <body>
     <h1>Search for movies by keywords</h1>
 
-    <div>
-      <ul class="films"></ul>
-    </div>
+    <form id="search-form">
+      <!-- pattern="^[A-Za-z0-9\s]*$" -->
+      <input type="text" id="title" placeholder="Enter your search query" />
+      <select id="type">
+        <option value="">All</option>
+        <option value="movie">Movie</option>
+        <option value="series">Series</option>
+        <option value="episode">Episode</option>
+      </select>
+      <button type="submit">Search</button>
+    </form>
+
+    <div id="results"></div>
+
+    <div id="details"></div>
   </body>
 </html>
