@@ -1,8 +1,8 @@
 const apiKey = "5b81342d";
 const searchForm = document.querySelector("#search-form");
 const resultsContainer = document.querySelector("#results");
-const paginationContainer = document.querySelector("#pagination");
 const detailsContainer = document.querySelector("#details");
+const modalOverlay = document.querySelector("#modal-overlay");
 
 searchForm.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -40,9 +40,18 @@ function displayResults(movies) {
 
   for (const movie of movies) {
     const div = document.createElement("div");
+
+    let realPoster;
+    if (movie.Poster === "N/A") {
+      realPoster = "./img/no_image.jpg";
+    } else {
+      realPoster = movie.Poster;
+    }
+
     div.innerHTML = `
-      ${movie.Title} (${movie.Year})
-      <button class="details-button" data-imdbid="${movie.imdbID}">Details</button>
+      <img src="${realPoster}" alt="Poster">
+      <p>${movie.Title} (${movie.Year})</p>
+      <button class="details-button" data-imdbid="${movie.imdbID}">details</button>
     `;
     resultsContainer.appendChild(div);
   }
@@ -68,5 +77,32 @@ async function getMovieDetails(imdbID) {
 }
 
 function displayDetails(movie) {
-  detailsContainer.innerHTML = `<h2>${movie.Title} (${movie.Year})</h2> <p><strong>Plot:</strong> ${movie.Plot}</p> <p><strong>Actors:</strong> ${movie.Actors}</p> <p><strong>Genre:</strong> ${movie.Genre}</p> <p><strong>Director:</strong> ${movie.Director}</p> `;
+  let realPoster;
+  if (movie.Poster === "N/A") {
+    realPoster = "./img/no_image.jpg";
+  } else {
+    realPoster = movie.Poster;
+  }
+
+  modalOverlay.style.display = "block";
+  detailsContainer.style.display = "flex";
+
+  detailsContainer.innerHTML = `
+      <img src="${realPoster}" alt="Poster">
+      <div class="details-wrapper">
+      <h2>${movie.Title} (${movie.Year})</h2> 
+      <p><strong>Plot:</strong> ${movie.Plot}</p>
+      <p><strong>Actors:</strong> ${movie.Actors}</p>
+      <p><strong>Genre:</strong> ${movie.Genre}</p>
+      <p><strong>Runtime:</strong> ${movie.Runtime}</p>
+      <p><strong>imdbRating:</strong> ${movie.imdbRating}</p>
+      <button class="close-button">close</button>
+      </div>`;
+
+  const closeButton = document.querySelector(".close-button");
+  closeButton.addEventListener("click", (event) => {
+    detailsContainer.innerHTML = "";
+    detailsContainer.style.display = "none";
+    modalOverlay.style.display = "none";
+  });
 }
