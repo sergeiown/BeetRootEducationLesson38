@@ -1,6 +1,8 @@
 @import "../scss/reset";
 @import "../scss/fonts";
+@import "../scss/results";
 @import "../scss/details";
+@import "../scss/overlay";
 
 html {
   @extend %fontfamily;
