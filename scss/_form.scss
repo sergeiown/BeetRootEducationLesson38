@@ -4,8 +4,15 @@ form {
   justify-content: space-around;
   align-items: center;
 
+  @media only screen and (max-width: 1200px) and (orientation: landscape) {
+    width: 80vw;
+  }
+
   @media only screen and (max-width: 1200px) and (orientation: portrait) {
-    width: 95vw;
+    width: 100vw;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5rem;
   }
 
   input {
@@ -14,6 +21,11 @@ form {
     border-radius: 0.3rem;
     opacity: 0.5;
     padding: 0 0.5rem;
+
+    @media only screen and (max-width: 1200px) and (orientation: portrait) {
+      width: 85%;
+      height: 2.5rem;
+    }
   }
 
   select {
@@ -22,6 +34,10 @@ form {
     border-radius: 0.3rem;
     opacity: 0.5;
     padding: 0 0.5rem;
+
+    @media only screen and (max-width: 1200px) and (orientation: portrait) {
+      width: 40%;
+    }
   }
 
   button {

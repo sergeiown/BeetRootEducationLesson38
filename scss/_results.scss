@@ -1,14 +1,23 @@
 #results {
   position: relative;
   width: 90vw;
-  height: 70vh;
+  min-height: 50vh;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  gap: 0.5rem 2rem;
-  margin: 0 0 2rem 0;
+  gap: 3rem 5rem;
+  margin: 3rem 0;
+
+  @media only screen and (max-width: 1200px) and (orientation: landscape) {
+    gap: 2rem;
+  }
+
+  @media only screen and (max-width: 1200px) and (orientation: portrait) {
+    flex-direction: column;
+    gap: 2rem 0;
+  }
 
   h1 {
     position: absolute;
@@ -23,15 +32,20 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    flex-basis: auto;
-    width: 15%;
-    height: 40%;
+    width: 20vw;
+    max-width: 18rem;
+    height: 18rem;
     border-radius: 1rem;
     background: rgba($color: #0e2a47, $alpha: 0.9);
     box-shadow: 0 0 1rem #fff;
 
+    @media only screen and (max-width: 1200px) and (orientation: portrait) {
+      width: 80%;
+    }
+
     img {
-      width: 25%;
+      max-width: 33%;
+      max-height: 10rem;
       align-self: center;
       border-radius: 0.2rem;
     }

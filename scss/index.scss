@@ -12,16 +12,16 @@ html {
     position: relative;
     user-select: none;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     background: url(../img/bg.svg) top left / cover repeat;
 
     h1 {
       @extend %title;
-      margin: 1rem 0 0 0;
+      margin: 2rem 0 1rem 0;
     }
 
     @media only screen and (max-width: 768px) {
