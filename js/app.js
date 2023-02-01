@@ -1,4 +1,5 @@
 const apiKey = "5b81342d";
+let realPoster;
 const searchForm = document.querySelector("#search-form");
 const resultsContainer = document.querySelector("#results");
 const detailsContainer = document.querySelector("#details");
@@ -44,11 +45,7 @@ async function getMovies(title, type, page) {
 /* displaying number of pages and controls */
 function displayPagination(totalResults, title, type, page) {
   let currentPage = page;
-  let totalPages = Math.ceil(totalResults / 10);
-
-  if (totalPages > 100) {
-    totalPages = 100;
-  }
+  let totalPages = Math.min(100, Math.ceil(totalResults / 10));
 
   paginationContainer.style.display = "flex";
   paginationContainer.innerHTML = `
@@ -103,20 +100,17 @@ function displayResults(movies) {
   resultsContainer.innerHTML = "";
 
   if (movies.length === 0) {
-    resultsContainer.innerHTML = `
-        <h1>Movie not found!</h1>`;
+    resultsContainer.innerHTML = `<h1>Movie not found!</h1>`;
     return;
   }
 
   for (const movie of movies) {
     const div = document.createElement("div");
 
-    let realPoster;
-    if (movie.Poster === "N/A") {
-      realPoster = "./img/no_image.jpg";
-    } else {
-      realPoster = movie.Poster;
-    }
+    realPoster =
+      movie.Poster === "N/A"
+        ? (realPoster = "./img/no_image.jpg")
+        : (realPoster = movie.Poster);
 
     div.innerHTML = `
       <img src="${realPoster}" alt="Poster">
@@ -150,12 +144,10 @@ async function getMovieDetails(imdbID) {
 
 /* displaying specific movie and close-button */
 function displayDetails(movie) {
-  let realPoster;
-  if (movie.Poster === "N/A") {
-    realPoster = "./img/no_image.jpg";
-  } else {
-    realPoster = movie.Poster;
-  }
+  realPoster =
+    movie.Poster === "N/A"
+      ? (realPoster = "./img/no_image.jpg")
+      : (realPoster = movie.Poster);
 
   modalOverlay.style.display = "block";
   detailsContainer.style.display = "flex";
