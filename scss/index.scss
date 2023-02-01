@@ -1,5 +1,6 @@
 @import "../scss/reset";
 @import "../scss/fonts";
+@import "../scss/body";
 @import "../scss/form";
 @import "../scss/results";
 @import "../scss/details";
@@ -7,33 +8,17 @@
 
 html {
   @extend %fontfamily;
+  font-size: 100%;
+}
 
-  body {
-    position: relative;
-    user-select: none;
-    width: 100vw;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: url(../img/bg.svg) top left repeat;
+@media only screen and (max-width: 768px) {
+  html {
+    font-size: 90%;
+  }
+}
 
-    h1 {
-      @extend %title;
-      margin: 2rem 0 1rem 0;
-    }
-
-    @media only screen and (max-width: 768px) {
-      html {
-        font-size: 75%;
-      }
-    }
-
-    @media only screen and (max-width: 320px) {
-      html {
-        font-size: 62.5%;
-      }
-    }
+@media only screen and (max-width: 320px) {
+  html {
+    font-size: 75%;
   }
 }

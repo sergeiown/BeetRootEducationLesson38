@@ -24,12 +24,22 @@ async function getMovies(title, type, page) {
 
   const response = await fetch(url);
   const data = await response.json();
+  const totalResults = data.totalResults;
+
+  console.log(data);
 
   if (data.Response === "True") {
+    displayPagination(totalResults, page);
+
     return data.Search;
   } else {
     return [];
   }
+}
+
+function displayPagination(totalResults, page) {
+  console.log(totalResults);
+  console.log(page);
 }
 
 /* displaying movie data and buttons for details */
@@ -77,7 +87,7 @@ async function getMovieDetails(imdbID) {
   const response = await fetch(url);
   const data = await response.json();
 
-  console.log(data);
+  // console.log(data);
   return data;
 }
 
