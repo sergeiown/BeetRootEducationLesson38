@@ -22,7 +22,7 @@ searchForm.addEventListener("submit", async (event) => {
 
 /* waiting for response with the movie data of the specified page */
 async function getMovies(title, type, page) {
-  const url = `http://www.omdbapi.com/?s=${encodeURIComponent(
+  const url = `https://www.omdbapi.com/?s=${encodeURIComponent(
     title
   )}&type=${encodeURIComponent(type)}&page=${page}&apikey=${apiKey}`;
 
@@ -128,7 +128,7 @@ function displayResults(movies) {
 
 /* waiting for response with the data of a specific movie by id */
 async function getMovieDetails(imdbID) {
-  const url = `http://www.omdbapi.com/?i=${imdbID}&apikey=${apiKey}`;
+  const url = `https://www.omdbapi.com/?i=${imdbID}&apikey=${apiKey}`;
 
   const response = await fetch(url);
   const data = await response.json();
