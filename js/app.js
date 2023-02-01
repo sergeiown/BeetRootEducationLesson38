@@ -15,6 +15,7 @@ searchForm.addEventListener("submit", async (event) => {
   displayResults(movies);
 });
 
+/* */
 async function getMovies(title, type, page) {
   const url = `http://www.omdbapi.com/?s=${encodeURIComponent(
     title
