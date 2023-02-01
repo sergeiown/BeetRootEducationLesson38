@@ -2,11 +2,15 @@ const apiKey = "5b81342d";
 const searchForm = document.querySelector("#search-form");
 const resultsContainer = document.querySelector("#results");
 const detailsContainer = document.querySelector("#details");
+const paginationContainer = document.querySelector("#pagination");
 const modalOverlay = document.querySelector("#modal-overlay");
 
 /* waiting for user actions with the form */
 searchForm.addEventListener("submit", async (event) => {
   event.preventDefault();
+
+  paginationContainer.style.display =
+    "none"; /* prevent pagination with no search result */
 
   const title = document.querySelector("#title").value;
   const type = document.querySelector("#type").value;
@@ -29,7 +33,7 @@ async function getMovies(title, type, page) {
   console.log(data);
 
   if (data.Response === "True") {
-    displayPagination(totalResults, page);
+    displayPagination(totalResults, title, type, page);
 
     return data.Search;
   } else {
@@ -37,9 +41,51 @@ async function getMovies(title, type, page) {
   }
 }
 
-function displayPagination(totalResults, page) {
-  console.log(totalResults);
-  console.log(page);
+/* displaying number of pages and controls */
+function displayPagination(totalResults, title, type, page) {
+  let currentPage = page;
+  let totalPages = Math.ceil(totalResults / 10);
+
+  if (totalPages > 100) {
+    totalPages = 100;
+  }
+
+  paginationContainer.style.display = "flex";
+  paginationContainer.innerHTML = `
+      <button class="previous-button">previous page</button>    
+      <p>Page ${currentPage} of ${totalPages}</p>
+      <button class="next-button">next page</button>
+  `;
+
+  const previousButton = document.querySelector(".previous-button");
+  const nextButton = document.querySelector(".next-button");
+
+  if (currentPage === 1) {
+    previousButton.disabled = true;
+  } else {
+    previousButton.disabled = false;
+    previousButton.addEventListener("click", async (event) => {
+      currentPage--;
+      const movies = await getMovies(title, type, currentPage);
+      displayResults(movies);
+    });
+  }
+
+  if (currentPage === 100 || currentPage === totalPages) {
+    nextButton.disabled = true;
+  } else {
+    nextButton.disabled = false;
+
+    nextButton.addEventListener("click", async (event) => {
+      currentPage++;
+      const movies = await getMovies(title, type, currentPage);
+      displayResults(movies);
+    });
+  }
+
+  console.log(`totalResults: ${totalResults}`);
+  console.log(`currentPage: ${page}`);
+  console.log(`totalPages: ${totalPages}`);
 }
 
 /* displaying movie data and buttons for details */
@@ -87,7 +133,8 @@ async function getMovieDetails(imdbID) {
   const response = await fetch(url);
   const data = await response.json();
 
-  // console.log(data);
+  console.log(data);
+
   return data;
 }
 

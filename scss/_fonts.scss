@@ -61,3 +61,8 @@
 %button-form-active {
   text-shadow: 0 0 0.2rem #ccc;
 }
+
+%button-form-disabled {
+  text-shadow: none;
+  color: rgba($color: aqua, $alpha: 0.2);
+}
