@@ -4,6 +4,7 @@ const resultsContainer = document.querySelector("#results");
 const detailsContainer = document.querySelector("#details");
 const modalOverlay = document.querySelector("#modal-overlay");
 
+/* waiting for user actions with the form */
 searchForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
@@ -15,7 +16,7 @@ searchForm.addEventListener("submit", async (event) => {
   displayResults(movies);
 });
 
-/* */
+/* waiting for response with the movie data of the specified page */
 async function getMovies(title, type, page) {
   const url = `http://www.omdbapi.com/?s=${encodeURIComponent(
     title
@@ -31,6 +32,7 @@ async function getMovies(title, type, page) {
   }
 }
 
+/* displaying movie data and buttons for details */
 function displayResults(movies) {
   resultsContainer.innerHTML = "";
 
@@ -68,6 +70,7 @@ function displayResults(movies) {
   }
 }
 
+/* waiting for response with the data of a specific movie by id */
 async function getMovieDetails(imdbID) {
   const url = `http://www.omdbapi.com/?i=${imdbID}&apikey=${apiKey}`;
 
@@ -78,6 +81,7 @@ async function getMovieDetails(imdbID) {
   return data;
 }
 
+/* displaying specific movie and close-button */
 function displayDetails(movie) {
   let realPoster;
   if (movie.Poster === "N/A") {
