@@ -65,6 +65,7 @@
   img {
     align-self: center;
     object-fit: contain;
+    border-radius: 0.5rem;
   }
 
   .details-wrapper {
@@ -84,7 +85,6 @@
   button {
     @extend %button;
     border: none;
-    margin: 1rem 0 0 0;
     transition: ease-in-out 0.2s;
     transform: translateX(center);
 

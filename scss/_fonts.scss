@@ -19,6 +19,12 @@
   text-align: center;
 }
 
+%form {
+  font-size: 1.1rem;
+  color: #0e2a47;
+  font-weight: bolder;
+}
+
 %text {
   font-size: 1rem;
   color: aqua;
@@ -32,13 +38,26 @@
 }
 
 %button-hover {
-  font-size: 1.1rem;
-  color: aqua;
   text-shadow: 0 0 0.1rem #ccc;
 }
 
 %button-active {
-  font-size: 1.1rem;
+  text-shadow: 0 0 0.2rem #ccc;
+}
+
+%button-form {
+  font-size: 1.2rem;
   color: aqua;
+  text-shadow: 0 0 0.2rem #000;
+  text-transform: uppercase;
+  font-weight: bolder;
+  letter-spacing: 0.1rem;
+}
+
+%button-form-hover {
+  text-shadow: 0 0 0.1rem #ccc;
+}
+
+%button-form-active {
   text-shadow: 0 0 0.2rem #ccc;
 }

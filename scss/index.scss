@@ -1,5 +1,6 @@
 @import "../scss/reset";
 @import "../scss/fonts";
+@import "../scss/form";
 @import "../scss/results";
 @import "../scss/details";
 @import "../scss/overlay";
@@ -14,9 +15,14 @@ html {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     background: url(../img/bg.svg) top left / cover repeat;
+
+    h1 {
+      @extend %title;
+      margin: 1rem 0 0 0;
+    }
 
     @media only screen and (max-width: 768px) {
       html {

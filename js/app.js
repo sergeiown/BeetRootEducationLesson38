@@ -34,7 +34,8 @@ function displayResults(movies) {
   resultsContainer.innerHTML = "";
 
   if (movies.length === 0) {
-    resultsContainer.innerHTML = "Movie not found!";
+    resultsContainer.innerHTML = `
+        <h1>Movie not found!</h1>`;
     return;
   }
 
