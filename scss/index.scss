@@ -17,7 +17,7 @@ html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: url(../img/bg.svg) top left / cover repeat;
+    background: url(../img/bg.svg) top left repeat;
 
     h1 {
       @extend %title;
