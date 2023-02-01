@@ -66,6 +66,11 @@ function displayPagination(totalResults, title, type, page) {
     previousButton.disabled = false;
     previousButton.addEventListener("click", async (event) => {
       currentPage--;
+
+      document.querySelector("#search-form").scrollIntoView({
+        behavior: "smooth",
+      }); /* focus on the top of the page */
+
       const movies = await getMovies(title, type, currentPage);
       displayResults(movies);
     });
@@ -78,6 +83,11 @@ function displayPagination(totalResults, title, type, page) {
 
     nextButton.addEventListener("click", async (event) => {
       currentPage++;
+
+      document.querySelector("#search-form").scrollIntoView({
+        behavior: "smooth",
+      }); /* focus on the top of the page */
+
       const movies = await getMovies(title, type, currentPage);
       displayResults(movies);
     });
