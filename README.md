@@ -1,2 +1,3 @@
 # BeetRootEducationLesson38
- AJAX
+
+AJAX and Pagination

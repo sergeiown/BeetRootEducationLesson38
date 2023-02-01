@@ -24,11 +24,29 @@
     <link rel="manifest" href="./favicon/site.webmanifest" />
     <link rel="stylesheet" href="./css/index.css" />
     <script defer src="./js/app.js"></script>
-    <title>AJAX</title>
+    <title>Search for movies</title>
   </head>
   <body>
     <h1>Search for movies by keywords</h1>
 
-    <div></div>
+    <form id="search-form">
+      <!-- pattern="^[A-Za-z0-9\s]*$" -->
+      <input type="text" id="title" placeholder="Enter your search query" />
+      <select id="type">
+        <option value="">All</option>
+        <option value="movie">Movie</option>
+        <option value="series">Series</option>
+        <option value="episode">Episode</option>
+      </select>
+      <button type="submit">Search</button>
+    </form>
+
+    <div id="results"></div>
+
+    <div id="details"></div>
+
+    <div id="pagination"></div>
+
+    <div id="modal-overlay"></div>
   </body>
 </html>

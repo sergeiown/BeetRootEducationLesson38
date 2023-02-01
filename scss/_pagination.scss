@@ -1,0 +1,35 @@
+#pagination {
+  display: none;
+  width: 80%;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1rem 0 3rem 0;
+
+  @media only screen and (max-width: 1200px) and (orientation: portrait) {
+    width: 100%;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  p {
+    @extend %subtitle;
+  }
+
+  button {
+    border: none;
+    @extend %button-form;
+
+    &:hover {
+      @extend %button-form-hover;
+    }
+    &:active {
+      @extend %button-form-active;
+    }
+
+    &:disabled,
+    :hover {
+      cursor: auto;
+      @extend %button-form-disabled;
+    }
+  }
+}

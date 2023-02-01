@@ -1,0 +1,16 @@
+body {
+  position: relative;
+  user-select: none;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url(../img/bg.svg) top left repeat;
+
+  h1 {
+    @extend %title;
+    margin: 2rem 0 1rem 0;
+  }
+}

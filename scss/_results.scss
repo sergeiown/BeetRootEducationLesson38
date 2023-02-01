@@ -1,0 +1,74 @@
+#results {
+  position: relative;
+  width: 90vw;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem 5rem;
+  margin: 3rem 0;
+
+  @media only screen and (max-width: 1200px) and (orientation: landscape) {
+    gap: 2rem;
+  }
+
+  @media only screen and (max-width: 1200px) and (orientation: portrait) {
+    flex-direction: column;
+    gap: 2rem 0;
+  }
+
+  h1 {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    @extend %title;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 20vw;
+    max-width: 18rem;
+    height: 18rem;
+    border-radius: 1rem;
+    background: rgba($color: #0e2a47, $alpha: 0.9);
+    box-shadow: 0 0 1rem #fff;
+
+    @media only screen and (max-width: 1200px) and (orientation: portrait) {
+      width: 80%;
+    }
+
+    img {
+      max-width: 33%;
+      max-height: 10rem;
+      align-self: center;
+      border-radius: 0.2rem;
+    }
+
+    p {
+      @extend %text;
+      padding: 0 0.5rem;
+      text-align: center;
+    }
+
+    button {
+      @extend %button;
+      border: none;
+      margin: 1rem 0 0 0;
+      transition: ease-in-out 0.2s;
+      transform: translateX(center);
+
+      &:hover {
+        @extend %button-hover;
+      }
+      &:active {
+        @extend %button-active;
+      }
+    }
+  }
+}

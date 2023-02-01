@@ -1,0 +1,56 @@
+form {
+  width: 50vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  @media only screen and (max-width: 1200px) and (orientation: landscape) {
+    width: 80vw;
+  }
+
+  @media only screen and (max-width: 1200px) and (orientation: portrait) {
+    width: 100vw;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  input {
+    @extend %form;
+    width: 50%;
+    border-radius: 0.3rem;
+    opacity: 0.5;
+    padding: 0 0.5rem;
+
+    @media only screen and (max-width: 1200px) and (orientation: portrait) {
+      width: 85%;
+      height: 2.5rem;
+    }
+  }
+
+  select {
+    @extend %form;
+    width: 25%;
+    border-radius: 0.3rem;
+    opacity: 0.5;
+    padding: 0 0.5rem;
+
+    @media only screen and (max-width: 1200px) and (orientation: portrait) {
+      width: 40%;
+    }
+  }
+
+  button {
+    @extend %button-form;
+    border: none;
+    transition: ease-in-out 0.2s;
+    transform: translateX(center);
+
+    &:hover {
+      @extend %button-form-hover;
+    }
+    &:active {
+      @extend %button-form-active;
+    }
+  }
+}
