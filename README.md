@@ -1,4 +1,4 @@
-# Search for movies App
+## Search for movies App
 
 Search application for movies and TV series using The Open Movie Database API with AJAX.
 
